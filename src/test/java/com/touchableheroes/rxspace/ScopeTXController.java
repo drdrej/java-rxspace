@@ -1,10 +1,10 @@
 package com.touchableheroes.rxspace;
 
-public class TransactionExecutor {
+public class ScopeTXController {
 
 	private Scope scope;
 
-	public TransactionExecutor( Scope src ) {
+	public ScopeTXController( Scope src ) {
 		this.scope = src;
 	}
 	

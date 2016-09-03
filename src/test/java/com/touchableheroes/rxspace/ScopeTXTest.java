@@ -14,7 +14,7 @@ public class ScopeTXTest {
 			}
 		};
 		
-		TransactionExecutor txe = new TransactionExecutor();
+		ScopeTXController txe = new ScopeTXController();
 		
 		txe.exec( scopeTX );
 	}
