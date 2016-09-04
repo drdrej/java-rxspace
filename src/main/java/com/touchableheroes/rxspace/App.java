@@ -1,5 +1,6 @@
 package com.touchableheroes.rxspace;
 
+
 public class App {
 	
 	
@@ -7,10 +8,6 @@ public class App {
 		MyObj myObj = new MyObj();
 	}
 	
-	App() {
-//		Scope s = RootScopeFactory.scope(); // erstellt ein Singleton, wenn nicht vorhanden.
-								//factory().create();
-	}
 	
 	
 	static class MyObj {
@@ -18,14 +15,15 @@ public class App {
 		public MyObj() {
 			
 			Scope root = RootScopeFactory.root();
+
+			// .factory()
+			// .parent( this ) 
+			// oder factory( this ), wobei kind und vater dürfen nie this bilden.
+			// was ist mit Zyklen?
+			// möglicher Fehler: parent und this dürfen nicht gleiche instanz sein.
 			
-			// Fehler: parent und this dürfen nicht gleiche instanz sein.
 			ScopeBinder binder = RootScopeFactory
 				.factory()
-				// .factory()
-				// .parent( this ) 
-				// oder factory( this ), wobei kind und vater dürfen nie this bilden.
-				// was ist mit Zyklen?
 				.binder( this );
 				
 				binder.onChange( MyKey.KEY1, new OnChangeEntry<Integer>() {
@@ -40,7 +38,7 @@ public class App {
 					}
 
 				});
-
+				
 				// Kurze Transaktion: mit synchronized?
 				binder.change( MyKey.KEY1, 10 );
 				
@@ -50,20 +48,14 @@ public class App {
 						tx.change( MyKey.KEY1, 1 );
 					}
 				});
-				
-				// an ende wird der Scope nach der TX angepasst.
-				
-				
-			
-//			RootScopeFactory.scope(MyObj.class).get(MyKey.KEY1);
-//			
-//			ScopeBinder b = RootScopeFactory.bind(MyObj.class)
-//					b.onChange( MyKey.KEY1, ... );
 		}
 		
 		@Override
 		protected void finalize() throws Throwable {
-			// b.commitAndRelease();
+			RootScopeFactory
+					.factory()
+					.binder( this )
+					.release();
 			
 			super.finalize();
 			

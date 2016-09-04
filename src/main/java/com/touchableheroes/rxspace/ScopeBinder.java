@@ -77,4 +77,9 @@ public class ScopeBinder {
 		return false;
 	}
 
+	public void release() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
