@@ -14,5 +14,5 @@ public interface ScopeFactory {
 	 * 
 	 * @return
 	 */
-	public ScopeBinder bind(Object boundTo);
+	public ScopeBinder binder(Object boundTo);
 }

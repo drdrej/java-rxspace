@@ -2,13 +2,18 @@ package com.touchableheroes.rxspace;
 
 public class App {
 	
+	
+	public static void main(String[] args) {
+		MyObj myObj = new MyObj();
+	}
+	
 	App() {
 //		Scope s = RootScopeFactory.scope(); // erstellt ein Singleton, wenn nicht vorhanden.
 								//factory().create();
 	}
 	
 	
-	class MyObj {
+	static class MyObj {
 		
 		public MyObj() {
 			
@@ -17,22 +22,32 @@ public class App {
 			// Fehler: parent und this dürfen nicht gleiche instanz sein.
 			ScopeBinder binder = RootScopeFactory
 				.factory()
-				.parent( this ) 
+				// .factory()
+				// .parent( this ) 
 				// oder factory( this ), wobei kind und vater dürfen nie this bilden.
 				// was ist mit Zyklen?
-				.bind( this );
+				.binder( this );
 				
-				binder.onChange( MyKey.KEY1, new OnChangeEntry() {
-					
+				binder.onChange( MyKey.KEY1, new OnChangeEntry<Integer>() {
+
+					public void doAfter(TXOperations ops) {
+						System.err.println( ">>> after changed" );						
+					}
+
+					public Integer on(Enum key, Integer newValue, Integer olbValue) {
+						System.err.println( ">>> on change" );
+						return newValue;												
+					}
+
 				});
 
 				// Kurze Transaktion: mit synchronized?
-				binder.change( MyKey.KEY1, Integer.class );
+				binder.change( MyKey.KEY1, 10 );
 				
 				binder.change( MyKey.KEY1, new ScopeTX() {
 					 
 					public void commit(final TXOperations tx) {
-						tx.change( MyKey.KEY1, Integer.class );
+						tx.change( MyKey.KEY1, 1 );
 					}
 				});
 				

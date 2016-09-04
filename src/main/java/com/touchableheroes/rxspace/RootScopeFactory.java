@@ -35,7 +35,7 @@ public class RootScopeFactory implements ScopeFactory {
         		return null;
         	}
 
-			public ScopeBinder bind(Object boundTo) {
+			public ScopeBinder binder(Object boundTo) {
 				// TODO Auto-generated method stub
 				return null;
 			}
@@ -46,7 +46,7 @@ public class RootScopeFactory implements ScopeFactory {
 		return root;
 	}
 
-	public ScopeBinder bind(Object boundTo) {
+	public ScopeBinder binder(Object boundTo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
