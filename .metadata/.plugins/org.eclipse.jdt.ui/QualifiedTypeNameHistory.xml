@@ -16,4 +16,6 @@
 <fullyQualifiedTypeName name="com.touchableheroes.rxspace.TXOperations.Factory"/>
 <fullyQualifiedTypeName name="java.lang.UnsupportedOperationException"/>
 <fullyQualifiedTypeName name="com.touchableheroes.rxspace.TXOperations.Commitable"/>
+<fullyQualifiedTypeName name="com.touchableheroes.rxspace.ScopeBinder"/>
+<fullyQualifiedTypeName name="com.touchableheroes.rxspace.HashBasedScope"/>
 </qualifiedTypeNameHistroy>
