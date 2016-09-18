@@ -4,9 +4,9 @@ import java.util.LinkedList;
 
 import com.touchableheroes.rxspace.OnChangeEntry;
 import com.touchableheroes.rxspace.Rule;
-import com.touchableheroes.rxspace.Scope;
-import com.touchableheroes.rxspace.ScopeKey;
-import com.touchableheroes.rxspace.TXOperations;
+import com.touchableheroes.rxspace.scopes.Scope;
+import com.touchableheroes.rxspace.scopes.meta.ScopeKey;
+import com.touchableheroes.rxspace.tx.TXOperations;
 
 /**
  * Created by asiebert on 26.02.16.

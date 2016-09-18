@@ -2,6 +2,10 @@ package com.touchableheroes.rxspace;
 
 import org.junit.*;
 
+import com.touchableheroes.rxspace.example.MyKey;
+import com.touchableheroes.rxspace.tx.ScopeTX;
+import com.touchableheroes.rxspace.tx.TXOperations;
+
 public class RootScopeFactoryScopeBinderTest {
 
 	

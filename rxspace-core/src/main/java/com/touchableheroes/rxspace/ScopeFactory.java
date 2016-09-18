@@ -1,5 +1,7 @@
 package com.touchableheroes.rxspace;
 
+import com.touchableheroes.rxspace.scopes.Scope;
+
 public interface ScopeFactory {
 	
 	/**

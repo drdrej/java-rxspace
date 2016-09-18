@@ -3,7 +3,10 @@ package com.touchableheroes.rxspace;
 import java.util.Map;
 import java.util.TreeMap;
 
-import com.touchableheroes.rxspace.TXOperations.Commitable;
+import com.touchableheroes.rxspace.scopes.Scope;
+import com.touchableheroes.rxspace.tx.ScopeTX;
+import com.touchableheroes.rxspace.tx.TXOperations;
+import com.touchableheroes.rxspace.tx.TXOperations.Commitable;
 
 public class ScopeTXController {
 

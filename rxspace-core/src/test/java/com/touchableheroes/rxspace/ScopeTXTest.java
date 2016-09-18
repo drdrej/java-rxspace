@@ -10,6 +10,11 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import com.touchableheroes.rxspace.example.MyKey;
+import com.touchableheroes.rxspace.scopes.Scope;
+import com.touchableheroes.rxspace.tx.ScopeTX;
+import com.touchableheroes.rxspace.tx.TXOperations;
+
 import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 

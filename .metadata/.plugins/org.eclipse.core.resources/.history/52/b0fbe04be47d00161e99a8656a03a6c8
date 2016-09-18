@@ -1,0 +1,10 @@
+package com.touchableheroes.rxspace;
+
+import com.touchableheroes.rxspace.ScopeKey;
+
+public class Asserts {
+
+	public boolean isKey( ScopeKey actual, ScopeKey expected ) {
+		return false;
+	}
+}

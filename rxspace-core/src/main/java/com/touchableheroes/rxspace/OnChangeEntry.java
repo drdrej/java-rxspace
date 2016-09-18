@@ -1,5 +1,7 @@
 package com.touchableheroes.rxspace;
 
+import com.touchableheroes.rxspace.tx.TXOperations;
+
 public interface OnChangeEntry<T> {
 
 	public void doAfter( TXOperations ops );

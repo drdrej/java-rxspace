@@ -1,0 +1,43 @@
+package com.touchableheroes.rxspace;
+
+import org.junit.*;
+
+public class RootScopeFactoryScopeBinderTest {
+
+	
+	@Test
+	public void testBasics() {
+
+		final ScopeBinder binder = RootScopeFactory
+			.factory()
+			.binder( this );
+			
+			binder.onChange( MyKey.KEY1, new OnChangeEntry<Integer>() {
+				
+				public void doAfter(final TXOperations ops) {
+					System.err.println( ">>> after changed" );						
+					
+					ops.change( MyKey.KEY2, "simple-string-value" );
+				}
+
+				public Integer onChange(
+						final Enum key, 
+						final Integer newValue, 
+						final Integer olbValue) {
+					System.err.println( ">>> on change: is possible to modify value before set." );
+					return newValue;												
+				}
+			}
+
+			);
+			
+			binder.change( MyKey.KEY1, 10 ); // --> key: Type in sorted Array oder fast hashmap? auch hier intern tx. ist nur eine einfache schreibweise. wobei hier auch direkt synchronized gesetzt werden kann
+			
+			binder.change( MyKey.KEY1, new ScopeTX() {
+				 
+				public void commit(final TXOperations tx) {
+					tx.change( MyKey.KEY1, 1 );
+				}
+			});
+	}
+}

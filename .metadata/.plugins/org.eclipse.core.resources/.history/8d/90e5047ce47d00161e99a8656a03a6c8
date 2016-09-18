@@ -1,0 +1,12 @@
+package com.touchableheroes.rxspace;
+
+import com.touchableheroes.rxspace.util.Asserts;
+
+public interface Condition {
+
+	public boolean match( Asserts asserts ) ;
+	
+	/*{
+		return asserts.isKey(null, null);
+	}*/
+}

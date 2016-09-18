@@ -1,0 +1,12 @@
+package com.touchableheroes.rxspace;
+
+import com.touchableheroes.rxspace.scopes.Scope;
+
+public class Scopes {
+
+	public Scope find(Object component) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

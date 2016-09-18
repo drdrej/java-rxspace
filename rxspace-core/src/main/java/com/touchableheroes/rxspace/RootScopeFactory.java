@@ -1,5 +1,9 @@
 package com.touchableheroes.rxspace;
 
+import com.touchableheroes.rxspace.scopes.HashBasedScope;
+import com.touchableheroes.rxspace.scopes.Scope;
+import com.touchableheroes.rxspace.scopes.Scopes;
+
 /**
  * Is a root scope.
  * Has only a reference to an application-scope.

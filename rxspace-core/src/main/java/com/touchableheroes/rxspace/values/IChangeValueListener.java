@@ -1,6 +1,6 @@
 package com.touchableheroes.rxspace.values;
 
-import com.touchableheroes.rxspace.ScopeKey;
+import com.touchableheroes.rxspace.scopes.meta.ScopeKey;
 
 /**
  * Created by asiebert on 08.12.15.

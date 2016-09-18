@@ -1,15 +1,19 @@
 package com.touchableheroes.rxspace;
 
+import com.touchableheroes.rxspace.scopes.Scope;
+import com.touchableheroes.rxspace.scopes.meta.ScopeKey;
+import com.touchableheroes.rxspace.tx.TXOperations;
 import com.touchableheroes.rxspace.values.ChangeValueListener;
 
 public class ScopeBinder implements Scope {
 
-	private Scope scope;
+	// oder andersherum??
+	private ScopeTXController txController;
 	
 	public ChangeValueListener<OnChangeEntry> listeners = new ChangeValueListener<OnChangeEntry>();
 	
 	public ScopeBinder(final Scope scope) {
-		this.scope = scope;
+		txController = new ScopeTXController(scope);
 	}
 	
 	public Rule onChange(
