@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="org.junit.Ignore"/>
+<fullyQualifiedTypeName name="com.touchableheroes.rxspace.Scope"/>
+<fullyQualifiedTypeName name="org.mockito.Mockito"/>
+<fullyQualifiedTypeName name="junit.framework.Assert"/>
+<fullyQualifiedTypeName name="org.junit.Assert"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="com.touchableheroes.rxspace.MyKey"/>
+<fullyQualifiedTypeName name="com.touchableheroes.rxspace.ScopeKey"/>
+<fullyQualifiedTypeName name="com.touchableheroes.rxspace.TXOperations"/>
+<fullyQualifiedTypeName name="java.lang.Cloneable"/>
+<fullyQualifiedTypeName name="com.touchableheroes.rxspace.TXOperations.HashMapBasedTXOperation"/>
+<fullyQualifiedTypeName name="com.touchableheroes.rxspace.TXOperations.Factory"/>
+<fullyQualifiedTypeName name="java.lang.UnsupportedOperationException"/>
+<fullyQualifiedTypeName name="com.touchableheroes.rxspace.TXOperations.Commitable"/>
+</qualifiedTypeNameHistroy>

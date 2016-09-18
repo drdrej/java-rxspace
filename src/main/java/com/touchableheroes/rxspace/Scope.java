@@ -1,25 +1,33 @@
 package com.touchableheroes.rxspace;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Scope {
 
-	public Object init(ScopeKey key) {
-		// TODO Auto-generated method stub
-		return null;
+	private HashMap<ScopeKey, Object> map = new HashMap<ScopeKey, Object>();
+	
+	public Object init(
+			final ScopeKey key) {
+		final Object rval = key.defaultValue();
+		map.put(key, rval);
+		
+		return rval;
 	}
 
-	public boolean has(ScopeKey key) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean has(
+			final ScopeKey key) {
+		return map.containsKey(key);
 	}
 
-	public Object get(ScopeKey key) {
-		// TODO Auto-generated method stub
-		return null;
+	@SuppressWarnings("unchecked")
+	public <T> T get(
+			final ScopeKey key) {
+		return (T) map.get(key);
 	}
 
 	public void set(ScopeKey key, Object newValue) {
-		// TODO Auto-generated method stub
-		
+		this.map.put(key, newValue);
 	}
 
 }

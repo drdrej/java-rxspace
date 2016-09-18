@@ -12,10 +12,10 @@ public class ScopeBinder {
 		this.scope = scope;
 	}
 	
-	public void onChange(
+	public Rule onChange(
 			final ScopeKey key, 
 			final OnChangeEntry listener) {
-		listeners.listen(listener);		
+		return listeners.listen(listener);		
 	}
 
 	public Object change(

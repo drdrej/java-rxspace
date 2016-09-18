@@ -27,20 +27,42 @@ public class App {
 				.binder( this );
 				
 				binder.onChange( MyKey.KEY1, new OnChangeEntry<Integer>() {
-
-					public void doAfter(TXOperations ops) {
+					
+					public void doAfter(final TXOperations ops) {
 						System.err.println( ">>> after changed" );						
+						
+						ops.change( MyKey.KEY2, "simple-string-value" );
 					}
 
-					public Integer on(Enum key, Integer newValue, Integer olbValue) {
-						System.err.println( ">>> on change" );
+//					@Override
+//					public OnChangeEntry when(Condition condition) {
+//						// TODO Auto-generated method stub
+//						return null;
+//					}
+
+					public Integer onChange(
+							final Enum key, 
+							final Integer newValue, 
+							final Integer olbValue) {
+						System.err.println( ">>> on change: is possible to modify value before set." );
 						return newValue;												
 					}
 
-				});
+				}
+				
+				/*.when(new Condition() {
+
+					public boolean match(Asserts asserts) {
+						// TODO Auto-generated method stub
+						return false;
+					}
+					
+					// .consistency()
+				} )*/
+				);
 				
 				// Kurze Transaktion: mit synchronized?
-				binder.change( MyKey.KEY1, 10 );
+				binder.change( MyKey.KEY1, 10 ); // --> key: Type in sorted Array oder fast hashmap? auch hier intern tx. ist nur eine einfache schreibweise. wobei hier auch direkt synchronized gesetzt werden kann
 				
 				binder.change( MyKey.KEY1, new ScopeTX() {
 					 

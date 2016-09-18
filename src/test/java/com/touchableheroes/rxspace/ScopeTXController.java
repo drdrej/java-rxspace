@@ -3,50 +3,41 @@ package com.touchableheroes.rxspace;
 import java.util.Map;
 import java.util.TreeMap;
 
+import com.touchableheroes.rxspace.TXOperations.Commitable;
+
 public class ScopeTXController {
 
 	private Scope scope;
 
-	public ScopeTXController( Scope src ) {
+	public ScopeTXController( 
+			final Scope src ) {
 		this.scope = src;
 	}
 	
-	public void exec(ScopeTX scopeTX) {
-		TXOperations txops = new TXOperations() {
-
-			Map<ScopeKey, Object> values = new TreeMap<ScopeKey, Object>();
-			
-			public void change(
-					ScopeKey key, 
-					Object  value) {
-				
-				// check if value is accepted
-				
-				// accept value
-				values.put(key, value);
-			}
-
-			public void reset(ScopeKey key) {
-				values.remove(key);
-			}
-			
-		};
+	public void exec(
+			final ScopeTX scopeTX) {
+		final TXOperations txOps = TXOperations.Factory.createTX(scopeTX); 
+		
 		try {
-			scopeTX.commit( txops );
-			commit(txops);
+			scopeTX.commit( txOps );
+			commit(txOps);
 		} catch (final Throwable e) {
-			rollback(txops);
+			rollback(txOps);
 		}
 	}
 
-	private void rollback(TXOperations txops) {
+	private void rollback(final TXOperations txops) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	private void commit(TXOperations txops) {
-		// TODO Auto-generated method stub
-		
+	private void commit(final TXOperations txops) {
+		if( txops instanceof Commitable ) {
+			((Commitable) txops).commit(scope);
+		} else {
+			throw new UnsupportedOperationException( "needs to be " + Commitable.class.getName() );
+		}
+		// scope.set(txops.);
 	}
 
 }

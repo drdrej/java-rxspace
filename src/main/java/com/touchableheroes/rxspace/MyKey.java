@@ -1,23 +1,31 @@
 package com.touchableheroes.rxspace;
 
-public enum MyKey implements ScopeKey<String> {
+public enum MyKey implements ScopeKey {
 
-	KEY1( Integer.class );
+	KEY1( Integer.class, 0 ), 
+	
+	KEY2( String.class, "test-string" );
 	
 	// ------------------------------------------------------------
 	// Implementation
 	// ------------------------------------------------------------
-	private Class<String> type;
+	private Class type;
+	private Object defaultValue;
 
-
-
-	MyKey( Class<Integer> type ) {
-		this.type = null;
+	<T> MyKey( Class<T> type,
+			T defaultValue) {
+		this.type = type;
+		this.defaultValue = defaultValue;
 	}
 
-	public Class<String> returnType() {
-		// TODO Auto-generated method stub
+	public Class returnType() {
 		return type;
+	}
+
+
+	@SuppressWarnings("unchecked")
+	public <T> T defaultValue() {
+		return (T) defaultValue;
 	}
 	
 }

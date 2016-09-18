@@ -6,12 +6,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.junit.Ignore;
 import org.junit.Test;
+import org.mockito.Mockito;
+
+import static org.mockito.Mockito.*;
+import static org.junit.Assert.*;
 
 public class ScopeTXTest {
 
 	private static final int UNTIL = 3000000;
 
+	@Ignore
 	@Test
 	public void timesOfMaps() {
 		final List<Map> all = new ArrayList<Map>(2);
@@ -47,16 +53,30 @@ public class ScopeTXTest {
 
 	@Test
 	public void testCommit() {
-//		ScopeTX scopeTX = new ScopeTX() {
-//			
-//			public void commit(TXOperations tx) {
-//				tx.change( MyKey.KEY1, null ); // NULL-Werte nicht erlaubt?
-//				tx.reset( MyKey.KEY1 ); // löscht individuellen Schlüssel
-//			}
-//		};
-//		
-//		ScopeTXController txe = new ScopeTXController();
-//		
-//		txe.exec( scopeTX );
+		ScopeTX scopeTX = new ScopeTX() {
+			
+			public void commit(TXOperations tx) {
+				tx.change( MyKey.KEY1, 12 ); // NULL-Werte nicht erlaubt?
+				tx.reset( MyKey.KEY2 ); // löscht individuellen Schlüssel
+			}
+		};
+		
+		final Scope scope = new Scope();
+				// mock(Scope.class);
+//		doNothing().when(scope).set(any(type), newValue);
+		// Mockito.when(scope.set(any(MyKey.class), anyInt())).thenReturn();
+		//Mockito.spy(object)
+		//doThrow f. void methoden.
+		
+		final ScopeTXController txe = new ScopeTXController(scope);
+		
+		txe.exec( scopeTX );
+		
+		
+		
+		final int result = (Integer) scope.get( MyKey.KEY1 );
+		assertEquals(12, result);
+		
+		// verify(scope);                       
 	}
 }

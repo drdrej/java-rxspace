@@ -1,8 +1,10 @@
 package com.touchableheroes.rxspace;
 
-public interface ScopeKey <T> {
+public interface ScopeKey {
 	
 //	@SuppressWarnings("unchecked")
-	public Class<T> returnType();
+	public Class returnType();
+	
+	public <T> T defaultValue();
 
 }
