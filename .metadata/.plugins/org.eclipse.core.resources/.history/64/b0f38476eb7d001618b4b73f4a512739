@@ -1,0 +1,9 @@
+package com.touchableheroes.rxspace.listeners;
+
+import com.touchableheroes.rxspace.values.ChangeValueListener;
+
+public class OnChangeEntryListenerManager {
+
+	private ChangeValueListener<OnChangeEntry> listeners = new ChangeValueListener<OnChangeEntry>();
+	
+}

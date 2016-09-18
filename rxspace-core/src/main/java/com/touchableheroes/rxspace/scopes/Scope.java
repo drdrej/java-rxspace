@@ -11,5 +11,7 @@ public interface Scope {
 	public <T> T get(final ScopeKey key);
 	
 	public void set(final ScopeKey key, final Object newValue);
+	
+	public Scope parent();
 
 }

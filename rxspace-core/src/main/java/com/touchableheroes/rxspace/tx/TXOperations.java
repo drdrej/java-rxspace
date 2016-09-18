@@ -7,6 +7,7 @@ import java.util.TreeMap;
 
 import com.touchableheroes.rxspace.scopes.Scope;
 import com.touchableheroes.rxspace.scopes.meta.ScopeKey;
+import com.touchableheroes.rxspace.tx.TXOperations.Commitable;
 
 public interface TXOperations {
 
@@ -24,16 +25,19 @@ public interface TXOperations {
 	
 	
 	public class Factory {
+		
 		public static final TXOperations createTX( 
 				final ScopeTX tx ) {
 			final HashMapBasedTXOperation rval = new HashMapBasedTXOperation();
 			return rval;
 		}
 		
-		public void commit(final TXOperations ops) {
-			if( ops instanceof Commitable ) {
-			    	
-			}
+		public void commit(final TXOperations txops, final Scope scope) {
+				if( txops instanceof Commitable ) {
+					((Commitable) txops).commit(scope);
+				} else {
+					throw new UnsupportedOperationException( "needs to be " + Commitable.class.getName() );
+				}   	
 		}
 	}
 	
@@ -66,7 +70,6 @@ public interface TXOperations {
 			public void rollback() {
 				map.clear();
 			}
-			
 		};
 
 

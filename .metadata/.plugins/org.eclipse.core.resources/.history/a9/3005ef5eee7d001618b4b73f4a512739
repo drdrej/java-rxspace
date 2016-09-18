@@ -1,0 +1,40 @@
+package com.touchableheroes.rxspace;
+
+import com.touchableheroes.rxspace.scopes.HashBasedScope;
+import com.touchableheroes.rxspace.scopes.Scope;
+import com.touchableheroes.rxspace.scopes.Scopes;
+
+/**
+ * Is a root scope.
+ * Has only a reference to an application-scope.
+ * 
+ * @author asiebert
+ */
+public class RootScope { 
+	
+	private static final RootScope SINGLETON = new RootScope();
+	private final Scope root = new HashBasedScope(null);
+	
+	public static Scope scope() {
+		return SINGLETON.root;
+	}
+	
+	public static RootScope factory() {
+		return SINGLETON;
+	}
+	
+	public Scope scope(final Object boundTo) {
+		return root;
+	}
+
+	public ScopeBinder create(final Scope parent) {
+		final HashBasedScope scope = new HashBasedScope(parent);
+		
+		return new ScopeBinder(scope);
+	}
+	
+	public void resolve(final ScopeBinder scope) {
+		throw new UnsupportedOperationException( "" );
+	}
+
+}

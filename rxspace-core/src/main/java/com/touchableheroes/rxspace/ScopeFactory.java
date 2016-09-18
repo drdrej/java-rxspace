@@ -1,7 +1,5 @@
 package com.touchableheroes.rxspace;
 
-import com.touchableheroes.rxspace.scopes.Scope;
-
 public interface ScopeFactory {
 	
 	/**
@@ -9,5 +7,5 @@ public interface ScopeFactory {
 	 * 
 	 * @return
 	 */
-	public Scope binder(Object boundTo);
+	public ScopeBinder binder(Object boundTo);
 }

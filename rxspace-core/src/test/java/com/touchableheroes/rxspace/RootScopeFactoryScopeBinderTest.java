@@ -3,6 +3,7 @@ package com.touchableheroes.rxspace;
 import org.junit.*;
 
 import com.touchableheroes.rxspace.example.MyKey;
+import com.touchableheroes.rxspace.listeners.OnChangeEntry;
 import com.touchableheroes.rxspace.tx.ScopeTX;
 import com.touchableheroes.rxspace.tx.TXOperations;
 
@@ -12,7 +13,7 @@ public class RootScopeFactoryScopeBinderTest {
 	@Test
 	public void testBasics() {
 
-		final ScopeBinder binder = RootScopeFactory
+		final ScopeBinder binder = RootScope
 			.factory()
 			.binder( this );
 			

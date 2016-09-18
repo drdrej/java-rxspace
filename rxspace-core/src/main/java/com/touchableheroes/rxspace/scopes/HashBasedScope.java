@@ -8,6 +8,12 @@ public class HashBasedScope implements Scope {
 
 	private HashMap<ScopeKey, Object> map = new HashMap<ScopeKey, Object>();
 	
+	private Scope parent;
+	
+	public HashBasedScope(final Scope parent) {
+		this.parent = parent;
+	}
+	
 	public Object init(
 			final ScopeKey key) {
 		final Object rval = key.defaultValue();
@@ -29,6 +35,10 @@ public class HashBasedScope implements Scope {
 
 	public void set(ScopeKey key, Object newValue) {
 		this.map.put(key, newValue);
+	}
+	
+	public Scope parent() {
+		return parent;
 	}
 	
 }

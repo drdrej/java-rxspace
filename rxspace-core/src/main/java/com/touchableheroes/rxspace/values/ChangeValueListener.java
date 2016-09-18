@@ -2,8 +2,8 @@ package com.touchableheroes.rxspace.values;
 
 import java.util.LinkedList;
 
-import com.touchableheroes.rxspace.OnChangeEntry;
 import com.touchableheroes.rxspace.Rule;
+import com.touchableheroes.rxspace.listeners.OnChangeEntry;
 import com.touchableheroes.rxspace.scopes.Scope;
 import com.touchableheroes.rxspace.scopes.meta.ScopeKey;
 import com.touchableheroes.rxspace.tx.TXOperations;
@@ -19,9 +19,9 @@ public class ChangeValueListener<T> implements IChangeValueListener<T> {
         ;
     }
     
-    public Rule listen( final OnChangeEntry listener ) {
+    public void listen( final OnChangeEntry listener ) {
     	listeners.add(listener);
-    	return null;
+    	return;
     }
 
 	public void changed(ScopeKey key, T newValue, T oldValue) {

@@ -30,16 +30,12 @@ public class ScopeTXController {
 	}
 
 	private void rollback(final TXOperations txops) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	private void commit(final TXOperations txops) {
-		if( txops instanceof Commitable ) {
-			((Commitable) txops).commit(scope);
-		} else {
-			throw new UnsupportedOperationException( "needs to be " + Commitable.class.getName() );
-		}
+//		txops.
+//		TXOperations.Factory.
 		// scope.set(txops.);
 	}
 
